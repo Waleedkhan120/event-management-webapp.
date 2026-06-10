@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Event Horizon</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <canvas id="starfield" aria-hidden="true"></canvas>
+  <div class="header-content">
+    <div class="logo-lockup">
+      <span class="logo-icon" aria-hidden="true">◎</span>
+      <h1 class="logo-text">Event Horizon</h1>
+    </div>
+    <p class="tagline">Where every moment becomes an occasion</p>
+    <div class="header-stats" aria-label="Event statistics">
+      <div class="stat-pill stat-pill--violet">
+        <span class="stat-pill__num" id="statTotal">0</span>
+        <span class="stat-pill__label">Total Events</span>
+      </div>
+      <div class="stat-pill stat-pill--cyan">
+        <span class="stat-pill__num" id="statUpcoming">0</span>
+        <span class="stat-pill__label">Upcoming</span>
+      </div>
+      <div class="stat-pill stat-pill--gold">
+        <span class="stat-pill__num" id="statPast">0</span>
+        <span class="stat-pill__label">Past Events</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="site-main">
+
+  <section aria-label="Search events">
+    <div class="search-wrapper">
+      <span class="search-icon" aria-hidden="true">⌕</span>
+      <input type="text" id="searchInput" class="search-input" placeholder="Search events by name or date…" aria-label="Search events" />
+      <button class="search-clear" id="searchClear" aria-label="Clear search" style="display:none">✕</button>
+    </div>
+  </section>
+
+  <section aria-labelledby="form-heading">
+    <div class="section-card">
+      <h2 id="form-heading" class="section-title">
+        <span class="section-badge">+</span> Add New Event
+      </h2>
+      <div id="formWarning" class="warning-banner" role="alert" aria-live="polite" hidden>
+        <span class="warning-icon">⚠</span>
+        <span id="warningText">Please fill in all fields.</span>
+      </div>
+      <div class="event-form">
+        <div class="form-group">
+          <label for="eventName" class="form-label">Event Name</label>
+          <input type="text" id="eventName" class="form-input" placeholder="e.g. Annual Tech Summit" maxlength="80" />
+        </div>
+        <div class="form-group">
+          <label for="eventDate" class="form-label">Event Date</label>
+          <input type="date" id="eventDate" class="form-input" />
+        </div>
+        <div class="form-group form-group--full">
+          <label for="eventDesc" class="form-label">Event Description</label>
+          <textarea id="eventDesc" class="form-textarea" placeholder="Describe the event, venue, highlights…" rows="4" maxlength="400"></textarea>
+        </div>
+        <div class="form-group form-group--full form-actions">
+          <button type="button" class="btn btn--primary" id="addEventBtn">
+            <span>Add Event</span><span aria-hidden="true">→</span>
+          </button>
+          <button type="button" class="btn btn--ghost" id="clearFormBtn">Clear</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="events-section" aria-labelledby="events-heading">
+    <div class="events-header">
+      <h2 id="events-heading" class="section-title">
+        <span class="section-badge" id="eventCount">0</span> Upcoming &amp; Past Events
+      </h2>
+      <div class="legend">
+        <span class="legend-chip legend-chip--upcoming">Upcoming</span>
+        <span class="legend-chip legend-chip--past">Past</span>
+      </div>
+    </div>
+    <div id="noResults" class="empty-state" hidden>
+      <span class="empty-icon">🔭</span><p>No events match your search.</p>
+    </div>
+    <div id="emptyState" class="empty-state" hidden>
+      <span class="empty-icon">🪐</span><p>No events yet. Add your first event above!</p>
+    </div>
+    <div id="eventList" class="event-grid" role="list"></div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span class="footer-brand">◎ Event Horizon</span>
+    <span class="footer-divider">·</span>
+    <span class="footer-year" id="footerYear"></span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
